@@ -3,6 +3,7 @@ import user from './user'
 import auth from './auth'
 import visit from './visit'
 import device from './device'
+import client from './client'
 
 const router = new Router()
 
@@ -33,5 +34,6 @@ router.use('/users', user)
 router.use('/auth', auth)
 router.use('/visits', visit)
 router.use('/devices', device)
+router.use('/clients', client)
 
 export default router
