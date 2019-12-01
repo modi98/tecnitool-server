@@ -19,8 +19,9 @@ const visitSchema = new Schema({
     type: Date,
     required: Date
   },
-  coordinate: {
-    type: String
+  coordinates: {
+    lat: Number,
+    lng: Number
   },
   maintenance: [
     {
@@ -49,7 +50,7 @@ visitSchema.methods = {
       clientId: this.clientId,
       startDate: this.startDate,
       endDate: this.endDate,
-      coordinate: this.coordinate,
+      coordinates: this.coordinates,
       maintenance: this.maintenance,
       createdAt: this.createdAt,
       updatedAt: this.updatedAt

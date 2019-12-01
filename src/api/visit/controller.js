@@ -10,6 +10,7 @@ export const create = ({ user, bodymen: { body } }, res, next) =>
 export const index = ({ querymen: { query, select, cursor } }, res, next) =>
   Visit.find(query, select, cursor)
     .populate('createdBy')
+    .populate('clientId')
     .then((visits) => visits.map((visit) => visit.view()))
     .then(success(res))
     .catch(next)
@@ -17,6 +18,7 @@ export const index = ({ querymen: { query, select, cursor } }, res, next) =>
 export const show = ({ params }, res, next) =>
   Visit.findById(params.id)
     .populate('createdBy')
+    .populate('clientId')
     .then(notFound(res))
     .then((visit) => visit ? visit.view() : null)
     .then(success(res))

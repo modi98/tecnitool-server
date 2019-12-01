@@ -7,7 +7,7 @@ import { schema } from './model'
 export Visit, { schema } from './model'
 
 const router = new Router()
-const { clientId, startDate, endDate, coordinate, maintenance } = schema.tree
+const { clientId, startDate, endDate, coordinates, maintenance } = schema.tree
 
 /**
  * @api {post} /visits Create visit
@@ -18,7 +18,7 @@ const { clientId, startDate, endDate, coordinate, maintenance } = schema.tree
  * @apiParam clientId Visit's clientId.
  * @apiParam startDate Visit's startDate.
  * @apiParam endDate Visit's endDate.
- * @apiParam coordinate Visit's coordinate.
+ * @apiParam coordinates Visit's coordinates.
  * @apiParam maintenance Visit's maintenance.
  * @apiSuccess {Object} visit Visit's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
@@ -27,7 +27,7 @@ const { clientId, startDate, endDate, coordinate, maintenance } = schema.tree
  */
 router.post('/',
   token({ required: true }),
-  body({ clientId, startDate, endDate, coordinate, maintenance }),
+  body({ clientId, startDate, endDate, coordinates, maintenance }),
   create)
 
 /**
@@ -70,7 +70,7 @@ router.get('/:id',
  * @apiParam clientId Visit's clientId.
  * @apiParam startDate Visit's startDate.
  * @apiParam endDate Visit's endDate.
- * @apiParam coordinate Visit's coordinate.
+ * @apiParam coordinates Visit's coordinates.
  * @apiParam maintenance Visit's maintenance.
  * @apiSuccess {Object} visit Visit's data.
  * @apiError {Object} 400 Some parameters may contain invalid values.
@@ -79,7 +79,7 @@ router.get('/:id',
  */
 router.put('/:id',
   token({ required: true, roles: ['admin'] }),
-  body({ clientId, startDate, endDate, coordinate, maintenance }),
+  body({ clientId, startDate, endDate, coordinates, maintenance }),
   update)
 
 export default router
